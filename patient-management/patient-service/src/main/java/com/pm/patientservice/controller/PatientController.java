@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/patient") // will handle all the REST API Req with localhost:4000/patient
+@RequestMapping("/patients") // will handle all the REST API Req with localhost:4000/patient
 public class PatientController {
     private final PatientService patientService;
 
