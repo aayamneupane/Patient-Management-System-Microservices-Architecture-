@@ -29,6 +29,7 @@ public class PatientService {
                 PatientMapper.toModel(patientRequestDTO)
         );
 
+        // an email address must be unique
         return PatientMapper.toDTO(newPatient);
     }
 }

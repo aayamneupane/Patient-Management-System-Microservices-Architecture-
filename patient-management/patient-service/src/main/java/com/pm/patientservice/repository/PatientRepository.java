@@ -8,5 +8,7 @@ import java.util.UUID;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, UUID> {
-
+    // Returns true if a record with this email already exists
+    // (e.g., to block duplicate sign-ups).
+    boolean existsByEmail(String email);
 }
