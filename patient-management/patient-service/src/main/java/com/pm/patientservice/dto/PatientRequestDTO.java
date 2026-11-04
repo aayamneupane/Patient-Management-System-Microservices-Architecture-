@@ -1,5 +1,6 @@
 package com.pm.patientservice.dto;
 
+import com.pm.patientservice.dto.validators.CreatePatientValidationGroup;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -60,6 +61,10 @@ public class PatientRequestDTO {
     @NotBlank(message = "DOB is required")
     private String dateOfBirth;
 
-    @NotBlank(message = "Registered date is required")
+    // Required only when creating a patient: the validation group restricts this
+    // check to requests validated with CreatePatientValidationGroup, so updates
+    // can omit registeredDate without failing validation.
+    // @NotBlank rejects null, empty "", and whitespace-only "   " values.
+    @NotBlank(groups = CreatePatientValidationGroup.class, message = "Registered date is required")
     private String registeredDate;
 }
